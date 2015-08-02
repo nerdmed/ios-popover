@@ -1,5 +1,5 @@
 Package.describe({
-    name: 'nerdemed:ios-popover',
+    name: 'nerdmed:ios-popover',
     version: '0.0.1',
 
     // Brief, one-line summary of the package.
@@ -15,7 +15,7 @@ Package.describe({
 
 Package.onUse(function(api) {
     api.versionsFrom('1.1.0.2');
-    api.use(['grigio:babel', 'templating'],'client');
+    api.use(['grigio:babel@0.1.6', 'templating'],'client');
     api.use('less');
     api.addFiles(['popover.html', 'popover.es6.js', 'popover.less'], 'client');
     api.export('IosPopover', 'client');
