@@ -1,0 +1,10 @@
+<template name="iosPopover">
+  <div class="popover-backdrop {{id}}">
+    <div class="popover-wrapper" id="{{id}}">
+      <div class="popover">
+        <div class="popover-arrow"></div>
+        	{{> Template.dynamic template=template data=data }}
+      </div>
+    </div>
+  </div>
+</template>

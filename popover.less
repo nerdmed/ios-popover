@@ -1,0 +1,196 @@
+@popover-bg-color:                #d3d4d8;
+@popover-bg-color-dark:           #4d4f5b;
+@popover-backdrop-bg-active:      rgba(0,0,0,0.3);
+@popover-backdrop-bg-inactive:    rgba(0,0,0,0);
+@popover-width:                   220px;
+@popover-height:                  50px;
+@popover-max-height:               280px;
+@popover-large-break-point:       680px;
+@popover-large-width:             360px;
+
+@popover-box-shadow:              0 1px 3px rgba(0,0,0,0.4);
+@popover-border-radius:           3px;
+
+@popover-box-shadow-ios:          0 0 40px rgba(0,0,0,0.08);
+@popover-border-radius-ios:       10px;
+
+@popover-bg-color-android:        #fafafa;
+@popover-box-shadow-android:      0 2px 6px rgba(0,0,0,0.35);
+@z-index-popover:                 10;
+
+.rotation(@deg:5deg){
+  .transform(rotate(@deg));
+}
+
+.transform(...) {
+  -webkit-transform: @arguments;
+  transform: @arguments;
+}
+
+/**
+* Popovers
+* --------------------------------------------------
+* Popovers are independent views which float over content
+*/
+
+.popover-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: @z-index-popover;
+  width: 100%;
+  height: 100%;
+  background-color: @popover-backdrop-bg-inactive;
+
+  &.active {
+    background-color: @popover-backdrop-bg-active;
+  }
+}
+
+.popover {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  z-index: @z-index-popover;
+  display: block;
+  margin-top: 12px;
+  margin-left: -@popover-width / 2;
+  min-height: @popover-height;
+  max-height: @popover-max-height;
+  width: @popover-width;
+  background-color: @popover-bg-color;
+  box-shadow: @popover-box-shadow;
+  opacity: 0;
+
+  &.dark{
+    background-color: @popover-bg-color-dark;
+
+    .popover-arrow {
+      &:after{
+        background-color: @popover-bg-color-dark;
+      }
+    }
+  }
+
+  .item:first-child {
+    border-top: 0;
+  }
+
+  .item:last-child {
+    border-bottom: 0;
+  }
+
+  &.popover-bottom {
+    margin-top: -12px;
+  }
+}
+
+
+// Set popover border-radius
+.popover,
+.popover .bar-header {
+  border-radius: @popover-border-radius;
+}
+.popover .scroll-content {
+  z-index: 1;
+  margin: 2px 0;
+}
+.popover .bar-header {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.popover .has-header {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.popover-arrow {
+  display: none;
+}
+
+
+// iOS Popover
+// .platform-ios {
+
+  .popover {
+    box-shadow: @popover-box-shadow-ios;
+  }
+
+  .popover,
+  .popover .bar-header {
+    border-radius: @popover-border-radius-ios;
+  }
+  .popover .scroll-content {
+    margin: 8px 0;
+    border-radius: @popover-border-radius-ios;
+  }
+  .popover .scroll-content.has-header {
+    margin-top: 0;
+  }
+  .popover-arrow {
+    position: absolute;
+    display: block;
+    top: -17px;
+    width: 30px;
+    height: 19px;
+    overflow: hidden;
+
+    &:after {
+      position: absolute;
+      top: 12px;
+      left: 5px;
+      width: 20px;
+      height: 20px;
+      background-color: @popover-bg-color;
+      border-radius: 3px;
+      content: '';
+      .rotation(-45deg);
+    }
+  }
+  .popover-bottom .popover-arrow {
+    top: auto;
+    bottom: -10px;
+    &:after {
+      top: -6px;
+    }
+  }
+  .popover-right, .popover-left{
+    margin: 0 12px;
+  }
+
+  .popover-right{
+    .popover-arrow {
+      .rotation(-90deg);
+    }
+  }
+
+  .popover-left{
+    .popover-arrow {
+      .rotation(90deg);
+    }
+  }
+
+
+// disable clicks on all but the popover
+.popover-open {
+  pointer-events: none;
+
+  .popover,
+  .popover-backdrop {
+    pointer-events: auto;
+  }
+  // prevent clicks on popover when loading overlay is active though
+  &.loading-active {
+    .popover,
+    .popover-backdrop {
+      pointer-events: none;
+    }
+  }
+}
+
+
+// wider popover on larger viewports
+@media (min-width: @popover-large-break-point) {
+  .popover {
+    width: @popover-large-width;
+  }
+}
