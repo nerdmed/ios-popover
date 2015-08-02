@@ -1,6 +1,6 @@
 Package.describe({
     name: 'nerdmed:ios-popover',
-    version: '0.0.1',
+    version: '0.0.2',
 
     // Brief, one-line summary of the package.
     summary: 'A simple ios style popover',

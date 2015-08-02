@@ -14,9 +14,9 @@ IosPopover = {
         this.onHide = onHide;
 
         var $backdrop = $(this.view.firstNode());
-        var $popover = $backdrop.find('.popover');
+        var $popover = $backdrop.find('.ios-popover');
         var $button = $(button);
-        var $arrow = $backdrop.find('.popover-arrow');
+        var $arrow = $backdrop.find('.ios-popover-arrow');
 
         var bodyWidth = $('body').width();
         var bodyHeight = $(window).innerHeight();
@@ -53,7 +53,7 @@ IosPopover = {
             _calculateHorizontalCSS();
           }
 
-          $popover.addClass(`popover-${direction}`);
+          $popover.addClass(`ios-popover-${direction}`);
 
           if(directionVertical){
             $arrow.css({
@@ -106,10 +106,10 @@ IosPopover = {
 
           if (buttonPosition.top + buttonHeight + popoverHeight > bodyHeight) {
               popoverCSS.top = buttonPosition.top - popoverHeight;
-              $popover.addClass('popover-bottom');
+              $popover.addClass('ios-popover-bottom');
           } else {
               popoverCSS.top = buttonPosition.top + buttonHeight;
-              $popover.removeClass('popover-bottom');
+              $popover.removeClass('ios-popover-bottom');
           }
         }
     },
@@ -119,7 +119,7 @@ IosPopover = {
             var $backdrop = $(this.view.firstNode());
             $backdrop.removeClass('active');
 
-            var $popover = $backdrop.find('.popover');
+            var $popover = $backdrop.find('.ios-popover');
             $popover.css({opacity: 0});
 
             if(this.onHide){
@@ -147,7 +147,7 @@ Template.iosPopover.destroyed = function() {
 Template.iosPopover.events({
     // Handle clicking the backdrop
     'click': function(event, template) {
-        if ($(event.target).hasClass('popover-backdrop')) {
+        if ($(event.target).hasClass('ios-popover-backdrop')) {
             IosPopover.hide();
         }
     }
