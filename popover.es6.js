@@ -115,7 +115,7 @@ IosPopover = {
     },
 
     hide: function() {
-        if (typeof this.view !== 'undefined') {
+        if (typeof this.view !== 'undefined' && this.view) {
             var $backdrop = $(this.view.firstNode());
             $backdrop.removeClass('active');
 
@@ -128,6 +128,7 @@ IosPopover = {
             }
 
             Blaze.remove(this.view);
+            this.view = null;
         }
     }
 };
