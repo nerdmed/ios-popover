@@ -18,7 +18,7 @@ IosPopover = {
         var $button = $(button);
         var $arrow = $backdrop.find('.ios-popover-arrow');
 
-        var bodyWidth = $('body').width();
+        var bodyWidth = $(window).width();
         var bodyHeight = $(window).innerHeight();
         var buttonRect = $button.get(0).getBoundingClientRect();
         var buttonPosition = $button.offset();

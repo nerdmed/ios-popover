@@ -1,6 +1,6 @@
 Package.describe({
     name: 'nerdmed:ios-popover',
-    version: '0.1.0',
+    version: '0.1.1',
     summary: 'A simple ios style popover',
     git: 'https://github.com/nerdmed/ios-popover.git'
 });
