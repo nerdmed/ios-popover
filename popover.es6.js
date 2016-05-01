@@ -18,6 +18,12 @@ IosPopover = {
         var $button = $(button);
         var $arrow = $backdrop.find('.ios-popover-arrow');
 
+        // add classes before reading styles
+        if(classes){
+          $popover.addClass(classes);
+          $backdrop.addClass(classes);
+        }
+
         var bodyWidth = $(window).width();
         var bodyHeight = $(window).innerHeight();
         var buttonRect = $button.get(0).getBoundingClientRect();
@@ -33,11 +39,6 @@ IosPopover = {
             opacity: 1,
             left: buttonPosition.left + buttonWidth / 2 - popoverWidth / 2
         };
-
-        if(classes){
-        	$popover.addClass(classes);
-        	$backdrop.addClass(classes);
-        }
 
         popoverCSS = _setPopoverCSS();
 
