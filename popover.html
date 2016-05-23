@@ -1,10 +1,10 @@
 <template name="iosPopover">
-  <div class="ios-popover-backdrop {{id}}">
+  <a class="ios-popover-backdrop {{id}}" href=''> {{! we need this empty href to support click events on ios }}
     <div class="ios-popover-wrapper" id="{{id}}">
       <div class="ios-popover">
         <div class="ios-popover-arrow"></div>
         	{{> Template.dynamic template=template data=data }}
       </div>
     </div>
-  </div>
+  </a>
 </template>

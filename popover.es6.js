@@ -148,9 +148,7 @@ Template.iosPopover.destroyed = function() {
 
 Template.iosPopover.events({
     // Handle clicking the backdrop
-    'click': function(event, template) {
-        if ($(event.target).hasClass('ios-popover-backdrop')) {
-            IosPopover.hide();
-        }
+    'click .ios-popover-backdrop': function(event, template) {
+        IosPopover.hide();
     }
 });

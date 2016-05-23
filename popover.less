@@ -33,13 +33,16 @@
 * Popovers are independent views which float over content
 */
 .ios-popover-backdrop {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: @z-index-popover;
   width: 100%;
   height: 100%;
   background-color: @popover-backdrop-bg-inactive;
+
+  // override cursor pointer for the a tag in browsers
+  cursor: default;
 
   &.active {
     background-color: @popover-backdrop-bg-active;
