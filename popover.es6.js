@@ -148,7 +148,11 @@ Template.iosPopover.destroyed = function() {
 
 Template.iosPopover.events({
     // Handle clicking the backdrop
-    'click .ios-popover-backdrop': function(event, template) {
-        IosPopover.hide();
+    'click': function(event, template) {
+        // make sure target is still attached to the DOM before executing actual handler,
+        // otherwise we can get a "Must be attached" Error from Blaze (https://github.com/meteor/meteor/issues/2981)
+        if ($(event.target).hasClass('ios-popover-backdrop')) {
+            IosPopover.hide();
+        }
     }
 });
