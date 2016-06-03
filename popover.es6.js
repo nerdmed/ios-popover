@@ -152,6 +152,7 @@ Template.iosPopover.events({
         // we can not add the class to click handler, because blaze bug (https://github.com/meteor/meteor/issues/2981)
         // otherwise we can get a "Must be attached" Error from Blaze.
         if ($(event.target).hasClass('ios-popover-backdrop')) {
+            event.preventDefault(true);
             IosPopover.hide();
         }
     }
