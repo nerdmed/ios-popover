@@ -157,3 +157,10 @@ Template.iosPopover.events({
         }
     }
 });
+
+Template.iosPopover.helpers({
+    href: function(){
+        if (Meteor.isCordova) return ''; // return empty to prevent route change
+        else return '#'; // return hash to enable cursor: pointer
+    }
+});
