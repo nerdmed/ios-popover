@@ -1,13 +1,13 @@
 Package.describe({
     name: 'nerdmed:ios-popover',
-    version: '0.1.6',
+    version: '0.1.7',
     summary: 'A simple ios style popover',
-    git: 'https://github.com/nerdmed/ios-popover.git'
+    git: 'https://github.com/nerdmed/ios-popover.git',
 });
 
 Package.onUse(function(api) {
     api.versionsFrom('1.2.1');
-    api.use(['ecmascript', 'templating'],'client');
+    api.use(['ecmascript', 'templating'], 'client');
     api.use('less');
     api.addFiles(['popover.html', 'popover.es6.js', 'popover.less'], 'client');
     api.export('IosPopover', 'client');
